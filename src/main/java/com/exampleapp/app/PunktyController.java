@@ -1,5 +1,6 @@
 package com.exampleapp.app;
 import com.exampleapp.app.StudentService;
+import com.exampleapp.app.db.StudentRepozytory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class PunktyController
 {
 
-    private StudentService service = new StudentService();
+    private final StudentService service;
 
+    public PunktyController(StudentService service)
+    {
+        this.service = service;
+
+    }
 
     private CopyOnWriteArrayList<String> users= new CopyOnWriteArrayList<>();
     {
