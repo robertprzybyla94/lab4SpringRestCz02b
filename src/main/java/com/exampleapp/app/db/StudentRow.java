@@ -1,5 +1,7 @@
 package com.exampleapp.app.db;
 
+import com.exampleapp.app.Student;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,13 @@ import javax.persistence.Id;
 public class StudentRow
 {
 
+    public Student toStudent()
+    {
+        return new Student(
+                this.getId(),
+                this.getName(),
+                this.getNumber(),
+                this.getStdgroup());    }
 
 protected StudentRow()
 {
@@ -61,4 +70,7 @@ this.stdgroup = stdgroup;
     public void setStdgroup(String stdgroup) {
         this.stdgroup = stdgroup;
     }
+
+
+
 }
