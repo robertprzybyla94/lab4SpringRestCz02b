@@ -5,6 +5,7 @@ public class Student {
     public long id;
     public String name, stdgroup, number;
 
+
     public Student(long id, String name, String number, String stdgroup)
     {
         this.id = id;
@@ -12,4 +13,5 @@ public class Student {
         this.stdgroup = stdgroup;
         this.number = number;
     }
+
 }

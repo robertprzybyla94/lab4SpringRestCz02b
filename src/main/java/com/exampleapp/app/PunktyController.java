@@ -1,17 +1,9 @@
 package com.exampleapp.app;
-import com.exampleapp.app.StudentService;
-import com.exampleapp.app.db.StudentRepozytory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 
 
 @RestController
@@ -51,6 +43,17 @@ public class PunktyController
     {
         return service.addStudent(student);
     }
+
+
+    @RequestMapping(value = "/students/{id}/scores",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public int addScore(@RequestBody Score score, @PathVariable("id") long id) {
+
+        return this.service.addScore(id, score)
+                .orElseThrow(
+                        ()->new  NoStudentException(id));
+    }
+
+
 
 
 

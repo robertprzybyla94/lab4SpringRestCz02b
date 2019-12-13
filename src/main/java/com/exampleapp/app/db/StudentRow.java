@@ -2,16 +2,16 @@ package com.exampleapp.app.db;
 
 import com.exampleapp.app.Student;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 
 
+
 public class StudentRow
 {
+
 
     public Student toStudent()
     {
@@ -70,6 +70,16 @@ this.stdgroup = stdgroup;
     public void setStdgroup(String stdgroup) {
         this.stdgroup = stdgroup;
     }
+
+    public Set<ScoreRow> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<ScoreRow> scores) {
+        this.scores = scores;
+    }
+
+    @OneToMany(mappedBy = "student")private Set<ScoreRow> scores;
 
 
 
